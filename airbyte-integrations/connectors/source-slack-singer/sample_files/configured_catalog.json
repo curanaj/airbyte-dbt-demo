@@ -209,6 +209,49 @@
       "sync_mode": "incremental",
       "cursor_field": [],
       "destination_sync_mode": "append"
+    },
+
+    {
+      "stream": {
+        "name": "threads",
+        "json_schema": {
+          "type": ["null", "object"],
+          "additionalProperties": false,
+          "properties": {
+            "thread_ts": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": []
+      },
+      "sync_mode": "incremental",
+      "cursor_field": [],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "messages",
+        "json_schema": {
+          "type": ["null", "object"],
+          "additionalProperties": false,
+          "properties": {
+            "thread_ts": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": []
+      },
+      "sync_mode": "incremental",
+      "cursor_field": [],
+      "destination_sync_mode": "append"
     }
   ]
 }
