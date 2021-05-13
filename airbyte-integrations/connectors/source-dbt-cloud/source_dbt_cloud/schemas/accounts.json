@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "id": "integer",
+        "name": "string",
+        "plan": "string",
+        "pending_cancel": "boolean",
+        "state": "integer",
+        "developer_seats": "integer",
+        "read_only_seats": "integer",
+        "run_slots": "integer",
+        "created_at": "string",
+        "updated_at": "string"
+      }
+    },
+    "status": {
+      "type": "object",
+      "items": {
+        "code": "integer",
+        "is_success": "boolean",
+        "user_message": "string",
+        "developer_message": "string"
+      }
+    }
+  }
+}
