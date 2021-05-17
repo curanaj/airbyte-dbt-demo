@@ -1,6 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"type": "object",
+	"additionalProperties": true,
 	"properties": {
 		"data": {
 			"type": "array",
@@ -8,25 +9,28 @@
 				"id": {
 					"type": "integer"
 				},
+				"account_id": {
+					"type": "integer"
+				},
+				"connection": {
+					"type": "object"
+				},
+				"connection_id": {
+					"type": "integer"
+				},
+				"dbt_project_subdirectory": {
+					"type": "integer"
+				},
 				"name": {
-					"type": "string"
+					"type": "integer"
 				},
-				"plan": {
-					"type": "string"
+				"repository": {
+					"type": "object"
 				},
-				"pending_cancel": {
-					"type": "boolean"
+				"repository_id": {
+					"type": "integer"
 				},
 				"state": {
-					"type": "integer"
-				},
-				"developer_seats": {
-					"type": "integer"
-				},
-				"read_only_seats": {
-					"type": "integer"
-				},
-				"run_slots": {
 					"type": "integer"
 				},
 				"created_at": {

@@ -41,7 +41,8 @@ class DbtCloudStream(HttpStream, ABC):
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
         return None
 
-    def request_params(self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None, next_page_token: Mapping[str, Any] = None) -> MutableMapping[str, Any]:
+    def request_params(self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None,
+                       next_page_token: Mapping[str, Any] = None) -> MutableMapping[str, Any]:
         # DBT uses offset and limit to paginate.
         return {}
 
@@ -52,10 +53,27 @@ class DbtCloudStream(HttpStream, ABC):
 
 class Accounts(DbtCloudStream):
     name = "accounts"
+    primary_key = "id"
+
+    def path(self, **kwargs):
+        return 'accounts'
+
+
+class Projects(DbtCloudStream):
+    name = "projects"
+    primary_key = ""
+
+    def path(self, **kwargs):
+        return f"/accounts/{self.account_id}/projects"
+
+
+class Jobs(DbtCloudStream):
+    name = "jobs"
     primary_key = ""
 
     def path(self, **kwargs) -> str:
-        return 'accounts'
+        return f"/accounts/{self.account_id}/jobs"
+
 
 class SourceDbtCloud(AbstractSource):
 
@@ -79,5 +97,7 @@ class SourceDbtCloud(AbstractSource):
         args = {"authenticator": auth, "account_id": config["account_id"]}
 
         return [
-            Accounts(**args)
+            Accounts(**args),
+            Projects(**args),
+            Jobs(**args)
         ]
